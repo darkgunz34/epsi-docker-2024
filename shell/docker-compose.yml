@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  front:
+    image: epsi-front
+    restart: always
+    container_name: front
+    environment:
+      TZ: Europe/Paris
+    ports:
+      - "4200:80"
+  bff:
+    image: epsi-bff
+    restart: always
+    container_name: bff
+    depends_on:
+      - microservice
+    environment:
+      TZ: Europe/Paris
+      PATH_MICRO_SERVICE: http://microservice:8081
+    ports:
+      - "8080:8080"
+  microservice:
+    image: epsi-micro-service
+    restart: always
+    container_name: microservice
+    environment:
+      TZ: Europe/Paris
+#    ports:
+#      - "8081:8081"
