@@ -17,6 +17,8 @@ services:
     environment:
       TZ: Europe/Paris
       PATH_MICRO_SERVICE: http://microservice:8081
+      USER: docker
+      PASSWORD: docker
     ports:
       - "8080:8080"
   microservice:
@@ -25,5 +27,23 @@ services:
     container_name: microservice
     environment:
       TZ: Europe/Paris
-#    ports:
-#      - "8081:8081"
+      DATABASE: docker
+      USER: docker
+      PASSWORD: docker
+      PATH_DATABASE: db
+  db:
+    image: mariadb:latest
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    volumes:
+      - ./bdd:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=docker
+      - MYSQL_USER=docker
+      - MYSQL_PASSWORD=docker
+  phpmyadmin:
+    image: phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 3001:80

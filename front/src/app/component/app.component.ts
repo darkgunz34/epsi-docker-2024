@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {DataService} from '../service/data.service';
 import {HttpClientModule} from '@angular/common/http';
 import {User} from '../entities/user';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,16 +13,30 @@ import {User} from '../entities/user';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, OnDestroy {
   title = 'front';
 
-  user: User | undefined;
+  dataServiceSubscription!: Subscription;
 
-  constructor(private dataService: DataService) {}
+  users: User[] | undefined;
+
+  constructor(private dataService: DataService) {
+  }
 
   ngOnInit() {
-    this.dataService.getData().subscribe(user => {
-      this.user = user;
+    this.dataServiceSubscription = this.dataService.getAllData().subscribe(users => {
+      console.log(users);
+      this.users = users;
+    });
+  }
+
+  ngOnDestroy() {
+    this.dataServiceSubscription.unsubscribe();
+  }
+
+  deleteUser(id: number) {
+    this.dataService.deleteUser(id).subscribe(() => {
+      this.users = this.users?.filter(user => user.id !== id);
     });
   }
 }
