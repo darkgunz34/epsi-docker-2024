@@ -19,9 +19,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @Value("${epsi.microservice.baseUrl}")
-    private String url;
-
     @GetMapping("/users")
     public List<User> getUser() {
         return this.userService.getUser();
