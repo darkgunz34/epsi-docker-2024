@@ -58,6 +58,6 @@ Usage des points suivants :
 - Création d'une image docker spécifique à son environnement
 - Utilisation de docker-compose pour lancer l'ensemble des services
   - Usage des variables d'environnement **OK**
-  - Utilisation de volumes **TODO: à définir**
-- Création de tag pour les images **TODO: à définir**
-- Push sur le registry **TODO: à définir**
+  - Utilisation de volumes **OK**
+- Création de tag pour les images **OK**
+- Push sur le registry **OK**

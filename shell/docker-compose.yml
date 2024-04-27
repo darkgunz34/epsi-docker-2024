@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   front:
-    image: epsi-front
+    image: stephanparichon/epsi-front:1.0
     restart: always
     container_name: front
     environment:
@@ -9,11 +9,9 @@ services:
     ports:
       - "4200:80"
   bff:
-    image: epsi-bff
+    image: stephanparichon/epsi-bff:1.0
     restart: always
     container_name: bff
-    depends_on:
-      - microservice
     environment:
       TZ: Europe/Paris
       PATH_MICRO_SERVICE: http://microservice:8081
@@ -21,16 +19,6 @@ services:
       PASSWORD: docker
     ports:
       - "8080:8080"
-  microservice:
-    image: epsi-micro-service
-    restart: always
-    container_name: microservice
-    environment:
-      TZ: Europe/Paris
-      DATABASE: docker
-      USER: docker
-      PASSWORD: docker
-      PATH_DATABASE: db
   db:
     image: mariadb:latest
     restart: always

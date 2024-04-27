@@ -1,0 +1,46 @@
+/* Styles for the user list */
+h2 {
+  color: #333; /* Couleur du titre */
+  font-size: 24px; /* Taille de la police */
+  margin-bottom: 10px; /* Marge en bas du titre */
+}
+
+h3 {
+  color: #666; /* Couleur du sous-titre */
+  font-size: 20px; /* Taille de la police */
+  margin-bottom: 5px; /* Marge en bas du sous-titre */
+}
+
+p {
+  margin-bottom: 5px; /* Marge en bas des paragraphes */
+}
+
+button {
+  background-color: #007bff; /* Couleur de fond du bouton */
+  color: #fff; /* Couleur du texte du bouton */
+  border: none; /* Pas de bordure */
+  padding: 5px 10px; /* Rembourrage interne */
+  cursor: pointer; /* Curseur de souris */
+  border-radius: 3px; /* Bordure arrondie */
+}
+
+button:hover {
+  background-color: #0056b3; /* Couleur de fond du bouton au survol */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 200px; /* Ajustez la largeur selon votre besoin */
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.clear {
+  margin-right: 0;
+}

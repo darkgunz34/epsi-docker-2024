@@ -1,6 +1,7 @@
 package fr.epsi.docker.service;
 
 import fr.epsi.docker.entities.User;
+import fr.epsi.docker.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,36 +10,44 @@ import java.util.List;
 @Service
 public class UserService implements IUserService {
 
-    static List<User> lstUser = new ArrayList<>();
+    private final UserRepository userRepository;
 
-    UserService() {
+    public UserService(UserRepository userRepository) {
+        List<User> lstUser = new ArrayList<>();
         lstUser.add(new User(1L, "Doe", "John", "johndoe@gmail.com", "0601020304"));
         lstUser.add(new User(2L, "Doe", "Jane", "janedoe@gmail.com", "0601020305"));
         lstUser.add(new User(3L, "Doe", "Jack", "jackdoe@gmail.com", "0601020306"));
         lstUser.add(new User(4L, "Doe", "Jill", "jilldoe@gmail.com", "0601020307"));
         lstUser.add(new User(5L, "Doe", "Jim", "jimdoe@gmail.com", "0601020308"));
+
+        userRepository.deleteAll();
+        userRepository.saveAll(lstUser);
+
+        this.userRepository = userRepository;
     }
 
-    public List<User> getUser() {
-        return lstUser;
+    @Override
+    public List<User> getAllUserList() {
+        return userRepository.findAll();
     }
 
+    @Override
     public User getUserById(Long id) {
-        return lstUser.stream().filter(user -> user.getId().equals(id)).findFirst().orElse(null);
+        return this.userRepository.findById(id).orElse(null);
     }
 
-    public User createUser(User user) {
-        lstUser.add(user);
-        return user;
+    @Override
+    public User createUser(User User) {
+        return userRepository.save(User);
     }
 
-    public User updateUser(User user) {
-        lstUser.removeIf(u -> u.getId().equals(user.getId()));
-        lstUser.add(user);
-        return user;
+    @Override
+    public User updateUser(User User) {
+        return userRepository.save(User);
     }
 
+    @Override
     public void deleteUser(Long id) {
-        lstUser.removeIf(user -> user.getId().equals(id));
+        userRepository.deleteById(id);
     }
 }

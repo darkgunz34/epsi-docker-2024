@@ -22,4 +22,8 @@ export class DataService {
   deleteUser(id: number) {
     return this.http.delete(`http://localhost:8080/bff/user/${id}`);
   }
+
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>('http://localhost:8080/bff/user', user);
+  }
 }

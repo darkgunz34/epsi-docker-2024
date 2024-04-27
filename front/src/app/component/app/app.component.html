@@ -1,0 +1,26 @@
+<h1>Welcome</h1>
+
+<div>
+  @if (users) {
+    <h2>List of user</h2>
+  }
+
+  <div class="container">
+    @for (user of users; track user) {
+      <div class="item">
+        <h3>{{ user.name }} {{ user.firstName }} !</h3>
+        <p> Email : {{ user.email }} !</p>
+        <p> Phone : {{ user.phone }} !</p>
+        <p> Age : {{ user.id }} !</p>
+        <button (click)="deleteUser(user.id)">Supprimer</button>
+      </div>
+    }
+  </div>
+
+  <app-add-user (userAdded)="refreshUsers()"></app-add-user>
+
+  @if (users?.length === 0 || !users) {
+    <p> No user found !</p>
+    <p>Check the network / log</p>
+  }
+</div>
