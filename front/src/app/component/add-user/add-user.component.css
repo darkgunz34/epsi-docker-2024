@@ -1,0 +1,29 @@
+/* Styles for the add user form */
+.form {
+  text-align: center; /* Centrage du formulaire */
+  margin-top: 20px; /* Marge en haut du formulaire */
+}
+
+label {
+  display: block; /* Affichage en bloc pour les labels */
+  margin-bottom: 5px; /* Marge en bas des labels */
+}
+
+input[type="text"],
+input[type="email"] {
+  width: auto; /* Largeur pleine du champ de saisie */
+  padding: 8px; /* Rembourrage interne */
+  margin-bottom: 10px; /* Marge en bas des champs de saisie */
+  border: 1px solid #ccc; /* Bordure */
+  border-radius: 3px; /* Bordure arrondie */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: #007bff; /* Couleur de la bordure au focus */
+  outline: none; /* Pas de contour au focus */
+}
+
+button[type="submit"]:hover {
+  background-color: #218838; /* Couleur de fond du bouton Ajouter au survol */
+}
