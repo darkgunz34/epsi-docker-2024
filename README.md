@@ -41,6 +41,10 @@ docker build . -t epsi-bff
 
 Le docker-compose se trouve directement dans le dossier shell.
 
+## Repo docker
+
+https://hub.docker.com/u/stephanparichon
+
 ## Utilisation
 
 Usage des points suivants :
