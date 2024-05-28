@@ -1,4 +1,4 @@
-# Shell
+# Docker
 
 Explication du projet
 
@@ -37,19 +37,9 @@ Docker :
 docker build . -t epsi-bff
 ```
 
-### micro-service
+### Shell
 
-Build :
-
-```bash
-mvn clean install
-```
-
-Docker :
-
-```bash
-docker build . -t epsi-micro-service
-```
+Le docker-compose se trouve directement dans le dossier shell.
 
 ## Utilisation
 
@@ -57,7 +47,7 @@ Usage des points suivants :
 
 - Création d'une image docker spécifique à son environnement
 - Utilisation de docker-compose pour lancer l'ensemble des services
-  - Usage des variables d'environnement **OK**
-  - Utilisation de volumes **OK**
-- Création de tag pour les images **OK**
-- Push sur le registry **OK**
+  - Usage des variables d'environnement
+  - Utilisation de volumes
+- Création de tag pour les images
+- Push sur le registry
